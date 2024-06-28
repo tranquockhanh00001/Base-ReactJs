@@ -8,19 +8,23 @@ import DisplayInfor from "./DisplayInfor";
 // eslint-disable-next-line no-unused-vars
 class MyComponent extends React.Component {
 
+    state = {
+            listUsers : [
+                {id: 1, name: 'Nguyen Van A', age: 20},
+                {id: 2, name: 'Nguyen Van B', age: 23},
+                {id: 3, name: 'Nguyen Van C', age: 26},
+            ]
+        }
 
     //JSX
     render(){
-        const myInfor = ['abc' , 'c', 'd']
-        
 
         return (
             <div>
                 <UserInfor></UserInfor>
                 <br></br>
-                <DisplayInfor name="Khanh dep trai" age = "30"/>
-                <hr/>
-                <DisplayInfor name="Kien ngu" age = "26" myInfor = {myInfor}/>
+                <DisplayInfor listUsers = {this.state.listUsers}/>
+                
 
             </div>
         );
