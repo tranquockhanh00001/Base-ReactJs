@@ -1,19 +1,25 @@
 
-import './App.css';
+import './App.scss';
+import Header from './components/Header/Header';
+import { Outlet } from 'react-router-dom';
 
-import MyComponent from './components/MyComponent';
-import React from 'react';
+const App = () =>{
 
-class App extends React.Component {
-  render() {
-    return(
-      <div>
-        Hello world with Khanh
-        <MyComponent></MyComponent>
+  return (
+    <div className="app-container">
+      <div className='header-container'>
+        <Header />
       </div>
-    )
-  }
-}
+      <div className='main-container'>
+        <div className='sidenav-container'>
 
+        </div>
+        <div className='app-container'>
+          <Outlet/>
+        </div>
+      </div> 
+    </div>
+  )
+}
 
 export default App;

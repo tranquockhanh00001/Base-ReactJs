@@ -1,0 +1,92 @@
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 1400px){
+  .container, .container-lg, .container-md, .container-sm, .conatiner-xl{
+    max-width: 1420px;
+  }
+}
+
+
+.app-container{
+  .header-container{
+    margin-top: 20px;
+    .btn-login{
+      border: none;
+      background-color: rgba(0,0,0, 0) !important;
+      margin-right: 15px;
+      height: 40px;
+    }
+    .btn-signup{
+      border-radius: 7px;
+      background-color: black;
+      color: white;
+      margin-right: 15px;
+      padding: 0 20px;
+      height: 40px;
+      &:hover{
+        background-color: rgba(65, 62, 62, 0.989);
+      }
+    }
+    
+    .navbar {
+      z-index: 10;
+      background-color: rgba(0,0,0, 0) !important;
+      .nav-link {
+        &.active{
+          color: #00bfff;
+        }
+      }
+    }
+  }
+
+  .homepage-container{
+    .homepage-content{
+      padding: 100px;
+      position: relative;
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .title-1{
+        font-size: 50px;
+        font-weight: 600;
+      }
+
+      .title-2{
+        font-size: 20px;
+      }
+
+      .homepage-button{
+        border-radius: 7px;
+        background-color: black;
+        color: white;
+        margin-right: 15px;
+        padding: 0 20px;
+        height: 40px;
+        border: none;
+        &:hover{
+          background-color: rgba(65, 62, 62, 0.989);
+      }
+
+    }
+  }
+}
+}
+
+video{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: auto;
+}
+

@@ -1,0 +1,26 @@
+.admin-container {
+    display: flex;
+    .admin-sidebar {
+        .pro-sidebar {
+            height: 100vh !important;
+            }
+    }
+
+    .admin-content{
+        width: 100%;
+        .admin-header{
+            padding-top: 5px;
+            margin-top: 2px;
+            height: 40px;
+            border: 1px solid green;
+            .fabar{
+                margin-left: 15px;
+                font-size: 20px;
+            }
+        }
+
+        .admin-main{
+            border: 1px solid red;
+        }
+    }
+}
