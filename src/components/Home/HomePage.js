@@ -14,7 +14,7 @@ const HomePage = (props) =>{
                 worth filling out</div>
                 <div className='title-2'>Get more data—like signups, feedback, and anything else—with forms designed to be refreshingly different.</div>
                 <div>
-                    <button className='homepage-button' >Get Started - it's free</button>
+                    <button className='button-29' >Get Started - it's free</button>
                 </div>
             </div>
         </div>

@@ -1,3 +1,17 @@
+.sidebar-container{
+  position: sticky;
+  .sidebar-header-container{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+    .sidebar-header-title{
+      margin-left: 5px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #adadad;
+    }
+  }
 
 .sidebar-btn-wrapper {
   display: flex;

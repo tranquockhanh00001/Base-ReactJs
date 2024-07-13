@@ -28,24 +28,33 @@ const SideBar = (props) => {
                 toggled={toggled}
                 breakPoint="md"
                 onToggle={handleToggleSidebar}
+                className='sidebar-container'
             >
-                <SidebarHeader>
-                    <div
-                        style={{
-                            padding: '24px',
-                            textTransform: 'uppercase',
-                            fontWeight: 'bold',
-                            fontSize: 14,
-                            letterSpacing: '1px',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
-                        }}
-                    >
-                        <DiReact size = {'3em'} color={"00bfff"}/>
-                        <span>KC</span>
-                    </div>
-                </SidebarHeader>
+                
+                    <SidebarHeader>
+                        <Link to="/">
+                        <div
+                            className='sidebar-header-container'
+                            style={{
+                                padding: '24px',
+                                textTransform: 'uppercase',
+                                fontWeight: 'bold',
+                                fontSize: 14,
+                                letterSpacing: '1px',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                                
+                            }}
+                        >
+                            
+                                <DiReact size = {'3em'} color={"00bfff"}/>
+                                <div className='sidebar-header-title'>KC</div>
+                            
+                        </div> 
+                        </Link>
+                    </SidebarHeader>
+                
 
                 <SidebarContent>
                     <Menu iconShape="circle">
@@ -82,7 +91,7 @@ const SideBar = (props) => {
                         }}
                     >
                         <a
-                            href="https://github.com/azouaoui-med/react-pro-sidebar"
+                            href="https://github.com/tranquockhanh00001/Base-ReactJs/tree/main/src"
                             target="_blank"
                             className="sidebar-btn"
                             rel="noopener noreferrer"

@@ -1,0 +1,36 @@
+
+.vh-100{
+    background-color: #ffffff;
+}
+
+.card{
+    border-radius: 25px;
+    border: none;
+}
+
+.avtSignup{
+    width: 500px;
+    height: 500px;
+}
+
+.form-input{
+    display: flex;
+    align-items: center;
+    .fas{
+        margin-top: 30px;
+    }
+}
+
+.card{
+    box-shadow: 1px 1px 5px 5px #efefef;
+}
+
+.form-outline{
+    position: relative;
+    .show-password{
+        position: absolute;
+        cursor: pointer;
+        right: 10px;
+        bottom: 7px;
+    }
+}
