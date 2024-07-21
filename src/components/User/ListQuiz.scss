@@ -1,0 +1,9 @@
+.lidt-quiz-container{
+    margin-top: 50px;
+    display: flex;
+    gap: 100px;
+    .card-img-top{
+        border-top-left-radius: 22px;
+        border-top-right-radius: 22px;
+    }
+}

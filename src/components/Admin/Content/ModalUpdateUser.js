@@ -59,8 +59,8 @@ const  ModalUpdateUser =(props) => {
 
        
 
-        let res = await putUpdateUser( dataUpdate.id, username,role, image)
-        if(res.data && res.data.EC === 0){
+        let data = await putUpdateUser( dataUpdate.id, username,role, image)
+        if(data && data.EC === 0){
             toast.success('Update user success ');
             handleClose();
             //await props.fetchListUsers()

@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { postLogin } from '../../services/apiService'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { doLogin } from '../../redux/action/userAction'
+import { ImSpinner10} from 'react-icons/im'
 
 const Login = (props) =>{
 
@@ -11,6 +14,8 @@ const Login = (props) =>{
     const [password, setPassWord] = useState("");
     const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false)
+    const dispatch = useDispatch()
+    const [isLoading, setIsLoading] = useState(false)
 
     const validateEmail = (email) => {
         return String(email)
@@ -33,13 +38,21 @@ const Login = (props) =>{
             toast.error('Password is required ')
             return;
         }
+
+        setIsLoading(true)
         //submit api
-        let res = await postLogin(email, password);
-        if(res.data && +res.data.EC === 0){
-            toast.success(res.data.EM)
+        let data = await postLogin(email, password);
+        if(data && +data.EC === 0){
+            dispatch(
+                doLogin(data)
+            )
+            
+            toast.success(data.EM)
+            setIsLoading(false)
             navigate('/')
         }else{
-            toast.error(res.data.EM)
+            toast.error(data.EM)
+            setIsLoading(false)
         }
     }
         return(
@@ -127,8 +140,14 @@ const Login = (props) =>{
                         ata-mdb-button-init data-mdb-ripple-init 
                         className="button-29 btn btn-primary btn-lg"
                         onClick={() => handleLogin()}
+                        disabled = {isLoading}
                     >
-                        Login to KC
+                        {isLoading ?
+                        <ImSpinner10 className='loaderIcon'/>
+                        :
+                         <></>
+                        }
+                        <span>Login to KC</span>
                         </button>
                     <p className="small fw-bold mt-4 pt-1 mb-0">Don't have an account? 
                         <a href='/register' className="link-danger">Register</a></p>

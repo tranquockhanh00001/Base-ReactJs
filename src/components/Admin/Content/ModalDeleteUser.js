@@ -10,16 +10,16 @@ const  ModalDeleteUser=(props)=> {
   const handleClose = () => setShow(false);
 
   const handleSubmitDeleteUser =async() =>{
-    let res = await deleteUser(dataDelete.id)
-    console.log(">>>>check res",res.data.DT.id)
-    if(res.data && res.data.EC === 0){
-        toast.success(res.data.EM)
+    let data = await deleteUser(dataDelete.id)
+    console.log(">>>>check res",data.DT.id)
+    if(data && data.EC === 0){
+        toast.success(data.EM)
         handleClose()
         // await props.fetchListUsers()
         props.setCurrentPage(1)
         await props.fetchListUsersPaginate(1)
     }else{
-        toast.error(res.data.EM)
+        toast.error(data.EM)
     }
   }
 

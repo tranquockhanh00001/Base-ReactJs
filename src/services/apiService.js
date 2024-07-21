@@ -36,11 +36,26 @@ const getUserPaginate = (page, limit) =>{
 }
 
 const postLogin = (userEmail, userPassword) => {
-     return axios.post(`v1/login`, {email: userEmail, password: userPassword})
+     return axios.post(`v1/login`, {
+          email: userEmail, 
+          password: userPassword,
+          delay: 2000
+     })
 }
 
 const postRegister = (userEmail, userName, userPassword) =>{
      return axios.post(`v1/register`, {username: userName, email: userEmail, password:userPassword})
 }
 
-export {postCreateNewUser, getAllUser, putUpdateUser, deleteUser, getUserPaginate, postLogin, postRegister}
+const getQuizByUser = () =>{
+     return axios.get('v1/quiz-by-participant')
+}
+
+const getDataQuiz = (id) =>{
+     return axios.get(`v1/questions-by-quiz?quizId=${id}`)
+}
+
+export {  postCreateNewUser, getAllUser, putUpdateUser, 
+          deleteUser, getUserPaginate, postLogin, 
+          postRegister, getQuizByUser, getDataQuiz
+     }

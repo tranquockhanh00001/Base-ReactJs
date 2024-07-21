@@ -26,6 +26,9 @@ body {
 
     .nav-link{
       font-size: 20px;
+      &:hover{
+        color: black;
+      }
     }
     .btn-login{
       border: none;
@@ -101,6 +104,7 @@ body {
       display: flex;
       flex-direction: column;
       gap: 30px;
+      
 
       .title-1{
         font-size: 50px;

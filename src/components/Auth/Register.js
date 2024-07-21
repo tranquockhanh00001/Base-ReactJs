@@ -39,14 +39,14 @@ const Register = () =>{
             return;
         }
 
-        let res = await postRegister(email, username, password);
-        if(res.data && res.data.EC === 0){
-            toast.success(res.data.EM)
+        let data = await postRegister(email, username, password);
+        if(data && data.EC === 0){
+            toast.success(data.EM)
             navigate('/login')
         }else{
-            toast.error(res.data.EM)
+            toast.error(data.EM)
         }
-        console.log(">>>>>check res", res.data)
+       
     }
 
 
