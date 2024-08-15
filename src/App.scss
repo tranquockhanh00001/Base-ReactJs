@@ -1,5 +1,6 @@
 
 body {
+  overflow: hidden;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -139,3 +140,28 @@ video{
   height: auto;
 }
 
+/* From Uiverse.io by adamgiebl */ 
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  border-radius: 20em;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+  }
+
+  &:active{
+    box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+  }
+}

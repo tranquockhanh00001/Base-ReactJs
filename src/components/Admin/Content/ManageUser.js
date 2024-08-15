@@ -66,7 +66,7 @@ const ManageUser = () =>{
     return(
         <div className="manage-user-container">
             <div className="title">
-                Manage User
+                Manage Users
             </div>
             <div className="user-content">
                 <div className="btn-add-new">

@@ -8,7 +8,7 @@ const Question = (props) =>{
     }
 
     const handleCheckbox = (event,aId, qId) =>{
-        console.log('check', event.target.checked, aId, qId )
+        
         props.handleCheckbox(aId, qId);
     }
     return(

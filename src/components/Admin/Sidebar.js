@@ -15,11 +15,12 @@ import { DiReact} from 'react-icons/di'
 import { MdDashboard} from 'react-icons/md'
 import sidebarBg from '../../assets/bg2.jpg';
 import './Sidebar.scss'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const SideBar = (props) => {
     const {   collapsed, toggled, handleToggleSidebar } = props;
+    const navigate = useNavigate();
     return (
         <>
             <ProSidebar
@@ -32,7 +33,7 @@ const SideBar = (props) => {
             >
                 
                     <SidebarHeader>
-                        <Link to="/">
+                        
                         <div
                             className='sidebar-header-container'
                             style={{
@@ -46,13 +47,14 @@ const SideBar = (props) => {
                                 whiteSpace: 'nowrap',
                                 
                             }}
+                            onClick={() => navigate('/')}
                         >
                             
                                 <DiReact size = {'3em'} color={"00bfff"}/>
                                 <div className='sidebar-header-title'>KC</div>
                             
                         </div> 
-                        </Link>
+                        
                     </SidebarHeader>
                 
 
@@ -76,8 +78,15 @@ const SideBar = (props) => {
                              User Management
                              <Link to = "/admins/manage-user"/>
                              </MenuItem>
-                            <MenuItem> Manage Quizzes</MenuItem>
-                            <MenuItem> Question Management</MenuItem>
+                            <MenuItem> 
+                            Manage Quizzes
+                            <Link to = "/admins/manage-quizzes"/>
+                            </MenuItem>
+                            <MenuItem> 
+                            <Link to = "/admins/manage-questions"/>
+                            Question Management
+                            <Link to = "/admins/manage-questions"/>
+                            </MenuItem>
                         </SubMenu>
 
                     </Menu>

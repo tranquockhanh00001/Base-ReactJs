@@ -1,0 +1,78 @@
+.questions-container{
+    padding: 20px;
+
+    .form-label{
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+   
+
+    .questions-title{
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .questions-content{
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        .desciption{
+            width: 50%;
+        }
+
+        .group-upload{
+            display: flex;
+            align-items: center;
+            .label-upload{
+                cursor: pointer;
+                margin-right: 5px;
+                margin-left: 20px;
+                color: #9068ff;
+                font-size: 26px;
+                border: none;
+                padding: 0;
+            }
+            &:hover{
+                color: #4400ff;
+            }
+
+        }
+
+        .btn-add{
+            margin-left: 50px;
+            display: flex;
+            gap: 15px;
+            .button-29{
+                font-size: 20px;
+            }
+        }
+
+    }
+
+    .answer-content{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 10px 20px;
+
+        .form-check-input{
+            font-size: 21px;
+        }
+
+        .desciption{
+            width: 60%;
+        }
+
+        .btn-add{
+            display: flex;
+            gap: 15px;
+            margin-left: 10px;
+        }
+    }
+
+    .save-questions{
+        display: flex;
+        text-align: right;
+    }
+}
