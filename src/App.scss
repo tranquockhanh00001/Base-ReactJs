@@ -18,6 +18,9 @@ body {
 
 
 .app-container{
+  .app-content{
+    height: calc(100vh - 45px);
+  }
   .header-container{
     margin-top: 20px;
     .logo-header{

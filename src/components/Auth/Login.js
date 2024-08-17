@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { doLogin } from '../../redux/action/userAction'
 import { ImSpinner10} from 'react-icons/im'
+import { GrLinkPrevious } from "react-icons/gr";
 
 const Login = (props) =>{
 
@@ -150,7 +151,10 @@ const Login = (props) =>{
                         <span>Login to KC</span>
                         </button>
                     <p className="small fw-bold mt-4 pt-1 mb-0">Don't have an account? 
-                        <a href='/register' className="link-danger">Register</a></p>
+                        <a href='/register' className="link-danger mx-2">Register</a></p>
+                </div>
+                <div className='go-home' onClick={() => navigate('/')}>
+                    <GrLinkPrevious /> Go to HomePage
                 </div>
 
                 </form>

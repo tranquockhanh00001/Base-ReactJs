@@ -103,10 +103,31 @@ const putUpdateQuizForAdmin = (id, name, description, difficulty, image) => {
      });
  }
 
+ const postAssignQuiz = (quizId, userId) =>{
+     return axios.post('v1/quiz-assign-to-user',{
+          quizId, userId
+     })
+ }
+
+ const getQuizWithQA = (quizId) =>{
+     return axios.get(`v1/quiz-with-qa/${quizId}`)
+ }
+ const postUpdateQA = (data) =>{
+     return axios.post(`v1/quiz-upsert-qa`,{
+               ...data   
+          }
+     )
+ }
+
+ const getOverView = () =>{
+     return axios.get(`v1/overview`)
+ }
+
 export {  postCreateNewUser, getAllUser, putUpdateUser, 
           deleteUser, getUserPaginate, postLogin, 
           postRegister, getQuizByUser, getDataQuiz,
           postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin,
           putUpdateQuizForAdmin, deleteQuizForAdmin, postCreateNewQuestionForQuiz,
-          postCreateNewAnswerForQuestion
+          postCreateNewAnswerForQuestion, postAssignQuiz, getQuizWithQA,
+          postUpdateQA, getOverView
      }

@@ -15,8 +15,7 @@ const  ModalFinishSubmit=(props)=> {
       <Modal 
         show={show} 
         onHide={handleClose}
-        backdrop
-
+        backdrop ="static"
       >
         <Modal.Header closeButton>
           <Modal.Title>Your Result</Modal.Title>
@@ -29,15 +28,20 @@ const  ModalFinishSubmit=(props)=> {
             Total Correct: <b>{dataModalresult.countCorrect}</b>
           </div>
           <div className='result'>
-            Mark: <b>{dataModalresult.countCorrect*(10/dataModalresult.countTotal)}</b>
+            Mark: <b>{Math.round(dataModalresult.countCorrect*(10/dataModalresult.countTotal)*100)/100}</b>
           </div>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant="secondary" onClick={() =>{
+          handleClose();
+          props.handleShowAnswer()
+        } 
+        }>
             Show answers
           </Button>
           <Button 
             variant="primary" 
+            onClick={handleClose}
           >
             Confirm
           </Button>

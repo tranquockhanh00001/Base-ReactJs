@@ -124,7 +124,7 @@ const ManageQuiz = (props) => {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <Accordion >
+            <Accordion className='bottom-accordion' >
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>Assign to Users</Accordion.Header>
                     <Accordion.Body>

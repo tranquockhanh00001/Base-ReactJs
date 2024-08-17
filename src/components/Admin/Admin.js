@@ -17,6 +17,7 @@ const Admin = (props) => {
                 <div className='admin-header'>
                     <FaBars className='fabar' onClick={() => setCollapsed(!collapsed)} />
                 </div>
+                <hr/>
                 <PerfectScrollbar>
                     <div className='admin-main'>
                         <Outlet/>

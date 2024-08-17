@@ -1,6 +1,7 @@
 import Select from 'react-select';
 import { useEffect, useState } from 'react';
-import { getAllQuizForAdmin, getAllUser } from '../../../../services/apiService';
+import { getAllQuizForAdmin, getAllUser, postAssignQuiz } from '../../../../services/apiService';
+import { toast } from 'react-toastify';
 
 const AssignQuiz = (props) => {
 
@@ -44,7 +45,16 @@ const AssignQuiz = (props) => {
             })
             setListUsers(newUser)
         }
-        console.log('>>>> check res', res)
+    }
+
+    const handleAssign = async() =>{
+        let res = await postAssignQuiz(selectedQuiz.value, selectedUser.value);
+        if (res && res.EC === 0) {
+            toast.success(res.EM)
+        }else{
+            toast.error(res.EM)
+        }
+        console.log('>>> check res', res)
     }
 
 
@@ -69,7 +79,7 @@ const AssignQuiz = (props) => {
                     />
             </div>
             <div className='mt-5'>
-                <button className="button-29">Assign Quiz</button>
+                <button className="button-29" onClick={() => handleAssign()}>Assign Quiz</button>
             </div>
         </div>
     )

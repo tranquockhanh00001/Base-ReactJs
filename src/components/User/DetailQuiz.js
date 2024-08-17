@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useLocation } from "react-router-dom"
 import { getDataQuiz, postSubmitQuiz } from "../../services/apiService";
 import _ from 'lodash'
 import './DetailQuiz.scss'
 import Question from "./Question";
 import ModalFinishSubmit from './ModalFinishSubmit'
+import RightContent from "./RigthDetailContent/RightContent";
+import PerfectScrollbar from 'react-perfect-scrollbar'
+// import Breadcrumb from 'react-bootstrap/Breadcrumb';
+// import { NavLink } from "react-router-dom";
 
 
 const DetailQuiz = () => {
@@ -14,7 +18,8 @@ const DetailQuiz = () => {
 
     const [dataQuiz, setDataQuiz] = useState([]);
     const [index, setIndex] = useState(0);
-
+    const [isSubmitQuiz, setIsSubmitQuiz] = useState(false);
+    const [isShowAnswer, setIsShowAnswer] = useState(false);
     const [isShowModal, setIsShowModal] = useState(false);
     const [dataModalresult, setDataModalResult] = useState({});
     
@@ -42,6 +47,7 @@ const DetailQuiz = () => {
                         image = item.image
                     }
                 })
+                answers = _.orderBy(answers, ['id'], ['asc']);
                 
                 return { questionId: key, answers, questionDescription, image }
             })
@@ -110,21 +116,58 @@ const DetailQuiz = () => {
         let res = await postSubmitQuiz(payload)
 
         if(res && res.EC === 0){
+            setIsSubmitQuiz(true)
             setDataModalResult({
                 countCorrect: res.DT.countCorrect,
                 countTotal: res.DT.countTotal,
                 quizData: res.DT.quizData
             })
-            setIsShowModal(true)
+            setIsShowModal(true);
+              //update DataQuiz with correct answer
+            if (res.DT && res.DT.quizData) {
+                let dataQuizClone = _.cloneDeep(dataQuiz);
+                let a = res.DT.quizData;
+                for (let q of a) {
+                    for (let i = 0; i < dataQuizClone.length; i++) {
+                        if (+q.questionId === +dataQuizClone[i].questionId) {
+                            //update answer
+                            let newAnswers = [];
+                            for (let j = 0; j < dataQuizClone[i].answers.length; j++) {
+                                let s = q.systemAnswers.find(item => +item.id === +dataQuizClone[i].answers[j].id)
+                                if (s) {
+                                    dataQuizClone[i].answers[j].isCorrect = true;
+                                }
+                                newAnswers.push(dataQuizClone[i].answers[j]);
+                            }
+                            dataQuizClone[i].answers = newAnswers;
+                        }
+                    }
+                }
+                setDataQuiz(dataQuizClone);
+            }
         }else{
             alert('submit fail')
-        }
+        }  
+    }
 
-        console.log('>>.check res', res)
-      
-        
+    const handleShowAnswer = () => {
+        if (!isSubmitQuiz) return;
+        setIsShowAnswer(true);
     }
     return(
+        <>
+        {/* <Breadcrumb className="quiz-detai-new-header">
+                <NavLink to='/' className='breadcrumb-item'>
+                    {t('header.home')}
+                </NavLink>
+                <NavLink to='/users' className='breadcrumb-item'>
+                    {t('header.user')}
+                </NavLink>
+                <Breadcrumb.Item active>
+                    {t('header.quiz')}
+                </Breadcrumb.Item>
+        </Breadcrumb> */}
+
         <div className="detail-quiz-container">
             <div className="left-content">
                 <div className="title">
@@ -135,6 +178,8 @@ const DetailQuiz = () => {
                         
                         index = {index}
                         handleCheckbox = {handleCheckbox}
+                        isShowAnswer={isShowAnswer}
+                        isSubmitQuiz={isSubmitQuiz}
                         data={ dataQuiz && dataQuiz.length >0 ? dataQuiz[index] : []}
                     />
                 </div>
@@ -148,15 +193,23 @@ const DetailQuiz = () => {
                 </div>
             </div>
             <div className="right-content">
-                count down
+                <PerfectScrollbar>
+                    <RightContent
+                        dataQuiz = {dataQuiz}
+                        handleFinish ={handleFinish}
+                        setIndex = {setIndex}
+                    />
+                </PerfectScrollbar>   
             </div>
             <ModalFinishSubmit
                 show = {isShowModal}
                 setShow = {setIsShowModal}
                 dataModalresult={dataModalresult}
+                handleShowAnswer={handleShowAnswer}
             />
           
         </div>
+        </>
     )
 }
 

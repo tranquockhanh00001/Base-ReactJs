@@ -1,0 +1,42 @@
+.dashbroad-container{
+    padding: 20px;
+    .title{
+        margin-top: -25px;
+        font-size: 27px;
+        font-weight: 600;
+    }
+
+    .dashbroad-content{
+        display: flex;
+        margin-top: 6rem;
+        height: 400px;
+        .dashbroad-content-left{
+            width: 40%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+            .total{
+                width: 36%;
+                margin: 20px;
+                border-radius: 10px;
+                box-shadow: 0.5px 0.5px 2px 2px #f1eeee;
+                display: flex;
+                flex-direction: column;
+                .text-1{
+                    font-size: 17px;
+                    font-weight: 400;
+                    margin-top: 1.5rem;
+                }
+                .text-2{
+                    font-size: 25px;
+                    margin-top: 10px;
+                    font-weight: 500;
+                }
+            }
+        }
+        .dashbroad-content-right{
+            width: 60%;
+        }
+    }
+}
